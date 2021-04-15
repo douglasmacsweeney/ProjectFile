@@ -3,8 +3,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 
-
-
 dataframe = pd.read_csv('/Users/douglasmacsweeney/Documents/Assignment/PycharmFiles/Data/FPL_dataset.csv')
 result = dataframe
 sorted_results = result.sort_values(by=['Points','Player'], ascending=False)
@@ -33,8 +31,6 @@ sorted_results1 = result.sort_values(by=['Goals_Scored','Player','Min_Played' ,'
 playersgoals = (sorted_results1[0:5])
 print(playersgoals)
 
-
-
 x2 = playersgoals['Player']
 y2 = playersgoals['Goals_Scored']
 plt.scatter(x2,y2 , color= 'r')
@@ -54,15 +50,29 @@ plt.ylabel('Goals Scored', color= 'grey')
 plt.bar(TeamID , y2 , color= 'purple')
 plt.show()
 
-
 sorted_results1 = result.sort_values(by=['Assists','Player'], ascending=False)
 sorteddf = (sorted_results1[0:9])
 
-plot3 = plt.figure(3)
-plot3.suptitle("Most Assists by Players")
+plot4 = plt.figure(4)
+plot4.suptitle("Most Assists by Players")
 
 plt.scatter(sorteddf.Player,sorteddf.Assists)
 plt.xlabel('Players' , color= 'grey')
 plt.ylabel('Assists', color= 'grey')
 sns.set()
 plt.show()
+
+
+df1 = pd.read_csv("/Users/douglasmacsweeney/Documents/Assignment/PycharmFiles/Data/marketvalues.csv",keep_default_na=False, na_values=[""])
+df2 = pd.read_csv('/Users/douglasmacsweeney/Documents/Assignment/PycharmFiles/Data/FPL_dataset.csv')
+
+new_dataset = pd.merge(df1, df2, left_on='Player', right_on=('Player'), how=('left'))
+print(new_dataset.head())
+xx = new_dataset['MarketValue']
+yy = new_dataset['Player']
+plt.plot(xx,yy)
+plt.show()
+
+
+
+
