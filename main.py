@@ -63,15 +63,21 @@ sns.set()
 plt.show()
 
 
-df1 = pd.read_csv("/Users/douglasmacsweeney/Documents/Assignment/PycharmFiles/Data/marketvalues.csv",keep_default_na=False, na_values=[""])
+plot5 = plt.figure(5)
+plot5.suptitle("Real World Market Value")
+df1 = pd.read_csv("/Users/douglasmacsweeney/Documents/Assignment/PycharmFiles/Data/marketvalues.csv")
 df2 = pd.read_csv('/Users/douglasmacsweeney/Documents/Assignment/PycharmFiles/Data/FPL_dataset.csv')
 
-new_dataset = pd.merge(df1, df2, left_on='Player', right_on=('Player'), how=('left'))
+new_dataset = pd.merge(df1, df2, left_on='Player', right_on=('Player'), how=('left') )
 print(new_dataset.head())
-xx = new_dataset['MarketValue']
-yy = new_dataset['Player']
+xx = new_dataset['Player']
+yy = new_dataset['MarketValue']
 plt.plot(xx,yy)
 plt.show()
+
+
+
+
 
 
 
